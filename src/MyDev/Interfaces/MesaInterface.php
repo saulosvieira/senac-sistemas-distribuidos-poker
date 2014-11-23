@@ -4,7 +4,7 @@ namespace MyDev\Interfaces;
 
 interface MesaInterface{
 
-    public function __construct(BaralhoInterface $baralho);
+    public function __construct(BaralhoInterface $baralho, array $jogadores);
 
     public function abrirFlop();
 

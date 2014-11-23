@@ -2,7 +2,6 @@
 
 namespace MyDev\Interfaces;
 
-use MyDev\Interfaces\BaralhoInterface;
 
 interface PokerInterface{
 
