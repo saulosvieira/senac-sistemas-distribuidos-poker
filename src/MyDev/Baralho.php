@@ -10,7 +10,7 @@ use Exception;
 
 class Baralho implements BaralhoInterface
 {
-
+    /* @var Carta[] $cartas */
     private $cartas = array();
     private $nipes = array('C', 'E', 'O', 'P');
     private $valores = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
