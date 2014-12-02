@@ -110,4 +110,32 @@ class Mesa implements MesaInterface
         }
         return $this->river;
     }
+
+    public function getProximoJogador(JogadorInterface $jogador)
+    {
+        for($i = 1; $i <= 8; $i++){
+            if($jogador->getPosicao() == $i){
+                
+            }
+        }
+    }
+
+    /**
+     * @return JogadorInterface[]
+     */
+    public function getJogadores()
+    {
+        return $this->jogadores;
+    }
+
+    /**
+     * Retorna o tatal de jogadores na mesa
+     * @return int
+     */
+    public function getTotalJogadores()
+    {
+        return count($this->jogadores);
+    }
+
+
 }

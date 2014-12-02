@@ -13,7 +13,7 @@ interface BaralhoInterface{
     public function setCartas(array $cartas);
 
     /**
-     * @return int
+     * @return intr
      */
     public function getTotalCartas();
 

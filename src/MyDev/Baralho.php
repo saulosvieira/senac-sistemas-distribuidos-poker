@@ -10,11 +10,14 @@ use Exception;
 
 class Baralho implements BaralhoInterface
 {
-    /* @var Carta[] $cartas */
+    /* @var CartaInterface[] $cartas */
     private $cartas = array();
     private $nipes = array('C', 'E', 'O', 'P');
     private $valores = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
 
+    /**
+     * Gera o baralho
+     */
     public function gerarBaralho()
     {
         foreach ($this->nipes as $n) {
@@ -24,6 +27,10 @@ class Baralho implements BaralhoInterface
         }
     }
 
+    /**
+     * Emabaralha as cartas do baralho
+     * @throws Exception
+     */
     public function embaralhar()
     {
         if (count($this->cartas) < 52) {
@@ -41,6 +48,10 @@ class Baralho implements BaralhoInterface
         $this->setCartas($cartas_embaralhadas);
     }
 
+    /**
+     * @return Carta[]
+     * @throws Exception
+     */
     public function getCartas()
     {
         if(count($this->cartas) == 0){
@@ -49,7 +60,9 @@ class Baralho implements BaralhoInterface
         return $this->cartas;
     }
 
-
+    /**
+     * @param CartaInterface[] $cartas
+     */
     public function setCartas(array $cartas)
     {
         if (isset($this->cartas)) {
@@ -72,6 +85,7 @@ class Baralho implements BaralhoInterface
     /**
      * Retorna a segunda carta do topo, descartando a primeira
      * @return CartaInterface
+     * @throws Exception
      */
     public function getCartaDoTopo()
     {
@@ -85,7 +99,7 @@ class Baralho implements BaralhoInterface
 
     /**
      * Descarta a carta da posição passada para o array de cartas
-     * @param $key
+     * @param int $key
      */
     public function descartarCarta($key)
     {

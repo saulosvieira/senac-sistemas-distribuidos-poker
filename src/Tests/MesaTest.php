@@ -13,9 +13,8 @@ class MesaTest extends PHPUnit_Framework_TestCase
     protected $carta2;
 
     protected function setUp(){
-        $carta1 = new Carta('o', 1);
-        $carta2 = new Carta('o', 2);
-        $this->jogadores = array(new Jogador($carta1, $carta2), new Jogador($carta1, $carta2));
+
+        $this->jogadores = array(new Jogador(1), new Jogador(3), new Jogador(7));
     }
 
     public function testAbreFlopCorretamente()
@@ -70,5 +69,14 @@ class MesaTest extends PHPUnit_Framework_TestCase
         $m->abrirRiver();
 
         $this->assertEquals($m->getRiver(), $cartas[9]);
+    }
+
+    public function testProximoJogadorCorretamente(){
+        $b = new Baralho();
+        $b->gerarBaralho();
+        $b->embaralhar();
+        $m = new Mesa($b, $this->jogadores);
+        $jogador = $this->jogadores[1];
+        $this->assertEquals($m->getProximoJogador($jogador), $this->jogadores[2]);
     }
 }

@@ -11,4 +11,6 @@ interface PokerInterface{
      * @return boolean
      */
     public function isStraightFlush();
+
+
 }
