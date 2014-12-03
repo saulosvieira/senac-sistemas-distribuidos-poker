@@ -78,5 +78,10 @@ class MesaTest extends PHPUnit_Framework_TestCase
         $m = new Mesa($b, $this->jogadores);
         $jogador = $this->jogadores[1];
         $this->assertEquals($m->getProximoJogador($jogador), $this->jogadores[2]);
+        $this->assertNotEquals($m->getProximoJogador($jogador), $this->jogadores[0]);
+        $jogador2 = $this->jogadores[2];
+        $this->assertEquals($m->getProximoJogador($jogador2), $this->jogadores[0]);
+
+
     }
 }

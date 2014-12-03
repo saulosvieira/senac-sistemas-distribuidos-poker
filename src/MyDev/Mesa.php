@@ -20,7 +20,7 @@ class Mesa implements MesaInterface
     private $flop;
     /* @var Carta $river */
     private $river;
-    /* @var Carta $turn */
+    /* @var Carta */
     private $turn;
 
     /**
@@ -31,6 +31,7 @@ class Mesa implements MesaInterface
     {
         $this->baralho = $baralho;
         $this->jogadores = $jogadores;
+
     }
 
     /**
@@ -111,13 +112,47 @@ class Mesa implements MesaInterface
         return $this->river;
     }
 
+    /**
+     * @param JogadorInterface $jogador
+     * @return JogadorInterface|Jogador
+     * @throws Exception
+     */
     public function getProximoJogador(JogadorInterface $jogador)
     {
+        if(count($this->jogadores) <= 1){
+            throw new \Exception('Para buscar o próximo jogador é necessário ter mais de um jogador na mesa;');
+        }
+
+        $jogador_encontrado = false;
+        $volta_na_mesa = false;
         for($i = 1; $i <= 8; $i++){
-            if($jogador->getPosicao() == $i){
-                
+            if($jogador->getPosicao() == $i && !$jogador_encontrado){
+                $jogador_encontrado = $jogador->getPosicao();
+            }
+            if($i < 8) {
+
+                if ($jogador_encontrado && $i > $jogador->getPosicao() && !$volta_na_mesa) {
+                    foreach ($this->jogadores as $jog) {
+                        if($i == $jog->getPosicao()){
+                            return $jog;
+                        }
+                    }
+                }
+
+                if($volta_na_mesa){
+                    echo $i;
+                    foreach ($this->jogadores as $jog) {
+                        if($i == $jog->getPosicao()){
+                            return $jog;
+                        }
+                    }
+                }
+            }else{
+                $i = 0;
+                $volta_na_mesa = true;
             }
         }
+        return $jogador;
     }
 
     /**
